@@ -48,12 +48,12 @@ tree.root.left.right = new Node(9);
 tree.insert(1)
 
 
-// Colts implementation
+// Colts (modified)implementation
 
 
 var Node = class {
-    constructor(value){
-        this.value = value;
+    constructor(val){
+        this.val = val;
         this.left = null;
         this.right = null;
     }
@@ -63,16 +63,16 @@ var BST = class {
     constructor(){
         this.root = null;
     }
-    insert(value){
-        var newNode = new Node(value);
+    insert(val){
+        var newNode = new Node(val);
         if(this.root === null){
             this.root = newNode;
             return this;
         }
         var current = this.root;
         while(true){
-            if(value === current.value) return undefined;
-            if(value < current.value){
+            if(val === current.val) return undefined;
+            if(val < current.val){
                 if(current.left === null){
                     current.left = newNode;
                     return this;
@@ -87,6 +87,19 @@ var BST = class {
             }
         }
     }
+    search(val){
+        let current = this.root
+        if(!this.root) return undefined;
+        while(current) {
+            if (current.val === val) return true
+            if (val > current.val) {
+                current = current.right
+            } else {
+                current = current.left
+            }    
+        }
+        return false
+     }
 }
 
 
@@ -103,7 +116,7 @@ tree.insert(2)
 tree.insert(16)
 tree.insert(7)
 
-
+tree.search(18)
 
 
 
