@@ -87,18 +87,18 @@ var BST = class {
             }
         }
     }
-    search(val){
+    find(val){
         let current = this.root
         if(!this.root) return undefined;
         while(current) {
-            if (current.val === val) return true
+            if (current.val === val) return current
             if (val > current.val) {
                 current = current.right
             } else {
                 current = current.left
             }    
         }
-        return false
+        return undefined
      }
 }
 
@@ -115,8 +115,8 @@ tree.insert(11)
 tree.insert(2)
 tree.insert(16)
 tree.insert(7)
-
-tree.search(18)
+//
+tree.find(7)
 
 
 
