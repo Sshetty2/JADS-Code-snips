@@ -1,0 +1,48 @@
+var HashTable = class{
+  constructor(size=53){
+    this.keyMap = new Array(size);  
+  }
+
+  _hash(key) {
+    let total = 0;
+    let WEIRD_PRIME = 31;
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let char = key[i];
+      let value = char.charCodeAt(0) - 96
+      total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+    }
+    return total;
+  }
+
+  set(key, val) {
+    let index = this._hash(key);
+    if (this.keyMap[index]) {
+      this.keyMap[index].push([key, val]);
+    }
+    else {
+      this.keyMap[index] = new Array([key, val]) 
+    }
+    return this.keyMap
+  }
+
+  get(key) {
+    let val, index = this._hash(key);
+    if(this.keyMap[index]) {
+      for (var i of this.keyMap[index]){
+        if (i[0] === key) {
+          return i[1]
+        }
+      }
+    }
+    return undefined
+  }
+
+}
+
+newHash = new HashTable(9)
+newHash.set('hello world', 'goodbye?')
+newHash.set('hello worldssss', 'goodbyessss?')
+newHash.set('hello worldssss', 'goodbye?')
+ 
+
+
