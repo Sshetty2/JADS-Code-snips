@@ -37,12 +37,41 @@ var HashTable = class{
     return undefined
   }
 
+  values(){
+    let valuesArr = [];
+    for (var i of this.keyMap) {
+      if(i){
+        for (var j of i){
+          if(!valuesArr.includes(j[0])){
+            valuesArr.push(j[0])
+          }
+        }
+      }
+    }
+   return valuesArr
+  }
+
+  keys(){
+    let keysArr = [];
+    for (var i of this.keyMap) {
+      if(i){
+        for (var j of i){
+          if(!keysArr.includes(j[1])){
+          keysArr.push(j[1])
+          }
+        }
+      }
+    }
+    return keysArr
+  }  
+
 }
 
 newHash = new HashTable(9)
 newHash.set('hello world', 'goodbye?')
 newHash.set('hello worldssss', 'goodbyessss?')
-newHash.set('hello worldssss', 'goodbye?')
+newHash.set('hello worldssss', 'goodbyessss?')
+
  
 
 
