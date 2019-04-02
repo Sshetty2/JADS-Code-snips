@@ -80,7 +80,7 @@ var DoublyLinkedList = class{
 	}
 	insert(idx, val) {
 		let preTarget = this.get(idx-1)
-		, postTarget = pre.next
+		, postTarget = this.get(idx+1)
 		, newNode = new Node(val);
 		return !this.length ? false 
 		: idx === 0 ? !!this.unshift(val) 
